@@ -1,7 +1,15 @@
 "use client";
 import { Canvas } from "@react-three/fiber";
 import css from "../styles/Home.module.css";
-import { Floor, Box, LightBulb, Controls, Draggable } from "@/Components";
+import {
+  Floor,
+  Box,
+  LightBulb,
+  Controls,
+  Draggable,
+  GltfModel,
+} from "@/Components";
+import { OrbitControls, Stars } from "@react-three/drei";
 
 export default function Home() {
   return (
@@ -14,12 +22,19 @@ export default function Home() {
         }}
       >
         <ambientLight color={"white"} intensity={0.2} />
+
+        <Stars />
         <LightBulb position={[0, 3, 0]} />
-        <Draggable>
+        <GltfModel
+          modelPath={`/media/astra.glb`}
+          scale={2}
+          position={[0, 0, 0]}
+        />
+        {/* <Draggable>
           <Box rotateX={3} rotateY={0.2} />
-        </Draggable>
+        </Draggable> */}
         <Controls />
-        <Floor position={[0, -1, 0]} />
+        {/* <Floor position={[0, -1, 0]} /> */}
       </Canvas>
     </div>
   );
